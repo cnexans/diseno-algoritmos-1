@@ -1,0 +1,13 @@
+Este Algoritmo se parece mucho al primero, este tiene
+un for de orden O(n), pero es depreciado porque este N
+representa la cantidad de pruebas y no deberia ser un numero muy 
+grande.
+
+Despues exiten 3 ciclos, cada uno de orden O(n)
+
+El siguiente ciclo, tiene una funcion de unir,que llama a una 
+funcion de busqueda que es recursiva. Esta recursividad le aporta
+al problema un orden O(n^2).
+
+Por consiguiente podriamos hablar de un algoritmo O(n^2)
+

@@ -1,0 +1,18 @@
+Por cada caso{
+	Se leen las variables
+	Por cada oficina{
+		Guardamos sus elementos y su padre
+	}
+	Por cada oficina{
+		Guardamos la cantidad de oficinas con sus coordenadas
+	}
+	Por cada consulta{
+		Se valida el tipo de consulta{
+			Se elimina un arco
+		}else{
+			Se imprime lasalida
+		}
+		
+	}
+	
+}
