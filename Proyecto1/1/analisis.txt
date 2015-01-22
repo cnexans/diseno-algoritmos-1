@@ -3,9 +3,10 @@ Para el analisis de este algoritmo, lo podemos dividir  en varias subpartes.
 La primera parte, seria la lectura de cada una de las pruebas.
 	Esta lectura, es de orden O(n), que que presenta un ciclo de tamaño N
 
-La segunda parte es la creacion de cada uno delos arcos posibles
+La segunda parte es la creacion de cada uno de los arcos posibles
 	Esta, creacion, es de orden O(n^2), ya que recorre la lista 
 	en orden cuadratico para conseguir generar todos los arcos posibles
+Se usa un algorimo de ordenamiento que viene con el lenguaje. Este algoritmo su complejidad es de O(nlogn)
 
 La tercera parte y mas compleja es una busqueda de las componentes conexas.
 	Esta trabaja con una lista y su recorrido de orden O(n)
@@ -13,4 +14,3 @@ La tercera parte y mas compleja es una busqueda de las componentes conexas.
 	Cada busqueda es de orden O(componentes_conexas). Es decir
 	que la busqueda es sobre un grafo mucho mas pequeño que N, por consiguiente, podriamos considerar que esta tercera 
 	parte es de orden O(n)
-	 

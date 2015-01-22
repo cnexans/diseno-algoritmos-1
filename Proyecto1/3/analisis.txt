@@ -1,0 +1,15 @@
+Primera parte es una lectura de la cantidad de pruebas que tiene el caso.
+	Esta primera parte es O(n), ya que es un ciclo de tamaño N
+Luego, tenemos para cada empleado un ciclo por el numero de
+actividades que este realizara.
+	Este ciclo es de tamaño n, por consiguiente, el proceso es 
+	O(n)
+
+Se usa un algorimo de ordenamiento que viene con el lenguaje. Este algoritmo su complejidad es de O(nlogn)
+
+Por ultimo, se realiza un ciclo de tamaño N, este ciclo tiene una complejidad de O(n)
+
+Como tenemos el primer ciclo por afuera, y todos los demas internos, podriamos pensar que entonces la complejidad del
+problema es de O(n^2.log N), Pero, al ser el primer ciclo un
+ciclo de iteraciones de pruebas, donde el numero no sera muy grande, podriamos pensar entonces que la complejidad de todo el
+algoritmo es la complejidad mas grande. Esta seria O(nlogN)
