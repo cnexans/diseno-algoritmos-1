@@ -17,15 +17,15 @@ vector < pair < double , pair < pair < int, int > , pair < int, int > > > > list
 
 double calcular_distancia(pair < int , int > punto1, pair < int, int > punto2){
 	// Sacamos la distancia entre dos puntos cualquieras
-	return sqrt(pow (punto2.first - punto1.first, 2.0 ) + \
-		pow(punto2.second - punto1.second, 2.0 ) );
+	return sqrt( pow ( punto2.first - punto1.first, 2.0 ) + \
+		pow( punto2.second - punto1.second, 2.0 ) );
 }
 
 double calcular_costo(pair <int, int> punto1, pair <int, int> punto2){
 	// Funcion auxiliar para calcular los costos dados dos puntos
 	int distancia = calcular_distancia(punto1,punto2);
 
-	if (distancia > R)
+	if ( distancia > R )
 	{
 		return distancia*V;
 	}
@@ -38,8 +38,8 @@ double calcular_costo(pair <int, int> punto1, pair <int, int> punto2){
 void lanzar_cable( pair < int, int > punto1 , pair < int, int > punto2 ){
 	// Funcion que crea los arcos de nuestro grafo reducido
 
-	int distancia = calcular_distancia(punto1,punto2);
-	grafo.push_back(make_pair(punto1,punto2));
+	int distancia = calcular_distancia( punto1,punto2 );
+	grafo.push_back( make_pair( punto1,punto2 ) );
 	
 	if (distancia > R)
 	{
@@ -52,7 +52,7 @@ void lanzar_cable( pair < int, int > punto1 , pair < int, int > punto2 ){
 
 }
 
-void calcular_posibles_arcos(vector < pair < int , int > > lista_nodos ){
+void calcular_posibles_arcos( vector < pair < int , int > > lista_nodos ){
 	// Con esta funcion, se crean todos los posibles arcos que pueda tener el grafo
 
 	lista_arcos.clear();
@@ -90,9 +90,9 @@ void imprimir_lista_arcos(){
 		{
 		   cout << lista_arcos[i].first << " - " \
 		   		<< lista_arcos[i].second.first.first << "," \
-		   		<<lista_arcos[i].second.first.second << " / " \
-		   		<<lista_arcos[i].second.second.first << "," \
-		   		<< lista_arcos[i].second.second.second << endl;	/* code */
+		   		<< lista_arcos[i].second.first.second << " / " \
+		   		<< lista_arcos[i].second.second.first << "," \
+		   		<< lista_arcos[i].second.second.second << endl;
 		}
 }
 
@@ -137,38 +137,32 @@ int main(){
 			pair <int, int> punto1 = lista_arcos[arco].second.first;
 			pair <int, int> punto2 = lista_arcos[arco].second.second;
 			
-			if (arco == 0){
-
+			if (arco == 0)
+			{
 				lanzar_cable(punto1 , punto2);
 				componentes_conexas--;
-
-			}else{
-
+			}else
+			{
 				if (buscar_nodos_en_grafo(punto1))
 				{
-
 					if (buscar_nodos_en_grafo(punto2))
 					{
-
-					}else{
-
+					}else
+					{
 						lanzar_cable(punto1 , punto2);
 						componentes_conexas--;
-
 					}
-				}else{
-
+				}else
+				{
 					if (buscar_nodos_en_grafo(punto2))
 					{
 
 						if (buscar_nodos_en_grafo(punto1))
 						{
-
-						}else{
-
+						}else
+						{
 							lanzar_cable(punto1,punto2);
 							componentes_conexas--;
-
 						}
 					}
 				}
