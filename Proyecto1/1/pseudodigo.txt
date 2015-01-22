@@ -1,0 +1,24 @@
+Se leen las entradas
+Para cada prueba {
+	Se leen todas las variables
+	Para par de puntos{
+		lista_arcos << Se crean todos los posibles arcos con su precio
+
+	} 
+	Se ordena ascendente todos los posibles arcos por su precio
+	componentes_conexas = Oficinas - Modems
+	Por cada arco en la lista_arcos{
+		Si es la primera iteracion{
+			grafo.add ( arco )
+			componentes_conexas--
+
+		}
+		Si solo uno de los puntos esta en el grafo{
+			grado.add (arco)
+			componentes_conexas--
+
+		}De lo contrario{
+			No pasa nada
+		}
+	}
+}
