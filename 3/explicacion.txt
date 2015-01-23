@@ -1,0 +1,5 @@
+Primero leemos la cantidad de empleados que exite
+
+Luego, vemos cuales son las actividades que tiene dicho empleado, luego ordenamos las actividades del empleado de forma ascendete.
+
+Luego, vamos agregando actividades realizadas o posibles a un contador, mientras existan posiciones libres o espacios libres para hacer un trabajo. Haciendo esto, estamos usando la estrategia Greedy. Garantizando asi que sea la solucion mas optima al problema.

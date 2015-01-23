@@ -1,0 +1,13 @@
+Lo primero que se hizo fue una lectura de las posibles cantidad de pruebas
+Luego, por cada prueba, leemos las coordenadas de la oficina y la colocamos dentro de una lista en forma de pares ordenados.
+Luego, sacamos todos los posibles arcos que pueden haber dadas
+las oficionas leidas, cada arco, tiene entonces un peso o costo
+y esto es calculado por la distancia entre oficinas en un plano
+
+Luego, ordenamos la lista por el costo de los arcos. Y empezamos a agregar a una nueva lista. Nuestro grafo final.
+A dicho grafo solo vamos a agregar los primeros N arcos, hasta obtener un grafo, Este grafo, tiene que cumplir que solo existe una cantidad de componentes disjuntas como modem hay en la prueba efectuada.
+
+Para verificar si se agrega o no un arco, tenemos que verificar si una coordenada ya ha sido agregada a nuestro grafo. Si es asi, entonces estamos uniendo dos componentes que antes estaban desunidas.
+
+Pero, si los dos puntos ya estan en nuestro nuevo grafo, entonces quiere decir que estamos haciendo un arco ya formado o un circuito. Por consiguiente este tipo de puntos no es agregado.
+
