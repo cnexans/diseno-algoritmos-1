@@ -1,0 +1,2 @@
+El problema fue resuelto usando la idea que hacer unión de conjuntos es menos cosotosa que eliminar arcos de un grafo. En base a esto, armamos el grafo con todos los nodos menos los que se iban a eliminar y contamos a partir de esto las cantidad de conexiones que causaría  que este arco se colocase, así le restabamos al total de conexiones existentes en dicho momento y así según cada query solicitado. Usamos una implementacion basada kruskal usando cojuntos disjuntos para obtener el resultado deseado.
+

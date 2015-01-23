@@ -8,14 +8,29 @@
 \author{}
 \date{}
 \pdfinfo{%
-  /Title    ()
-  /Author   ()
+  /Title    (Diseño de Algoritmos - Proyecto 1)
+  /Author   (Fabio Castro, Leopoldo Pimentel)
   /Creator  ()
   /Producer ()
   /Subject  ()
   /Keywords ()
 }
 \begin{document}
+
+
+
+
+ 
+\title{\Huge Proyecto 1-Diseño de Algoritmos I}
+
+
+
+\author{Fabio Castro 10-10132, Leopoldo Pimentel 06-40095} 
+
+
+
+\date{23/01/2015}
+
 \maketitle
 \section{Problema 1}
 \subsection{Análisis de Complejidad}
@@ -32,18 +47,45 @@
   Cada busqueda es de orden {$O(componentes_conexas)$}. Es decir que la busqueda es sobre un 
   grafo mucho mas pequeño que {$N$}, por consiguiente, podriamos considerar que esta tercera 
   parte es de orden {$O(n)$}
-\subsection{Psucódigo}
 \begin{algorithm}                      % enter the algorithm environment
-\caption{Calcular $total$, que es el total de actividades que puede realizar el empleado}          % give the algorithm a caption
+\caption{Calcular maxima cantidad de cable normal y cable especial para que sea mínimo en costo y todos los nodos se encuentren conectados}          % give the algorithm a caption
 \label{Problema 1}                           % and a label for \ref{} commands later in the document
 \begin{algorithmic}[1]                    % enter the algorithmic environment
-    \REQUIRE {$C$ Cantidad de tareas, $A$ Lista de tuplas de actividades}
-    \ENSURE Entero que indica la cantidad maxima de actividades que puede realizar
-    \STATE entero {$ultimo = -1$}
-    \RETURN {$ total $}
+\REQUIRE {$C$ Conjunto de Pares que contienen las coordenadas de los nodos, $M$ Maxima cantidad de metros a tarifa1, $T1$ Tarifa 1, $T2$ Tarifa 2, $MO$ Cantidad de Modems}
+    \ENSURE Par que contiene en la primera posicion la cantidad de cable normal, y en la segunda cantidad de cable especial.
+    \STATE entero {$componentesconexas$} = {$C$.size() - $M$}
+    \STATE $par < entero , entero >  salida $ 
+    \STATE entero $tarifa$ = 0
+    \STATE entero $costototalt1$ = 0
+    \STATE entero $costototalt2$ = 0
+    \STATE pila {$q$} = {\bf DistanciasYCostos}{({$C$})}
+    \COMMENT{La cola esta ordena por menor costo}
+    \STATE $par < par < entero , entero > , entero > elemento e$
+    \FOR  {$entero$ $x = 0$ ; $entero$ $<$ $q.size()$ \bf y $componentesconexas$ $>$ $0$ ; $x=x+1$} 
+      \STATE $elemento$ = $q.pop$
+        \IF { $find(elemento.primero.primero)$ diferente $find(elemento.primero.segundo)$}
+	  \STATE $tarifa = elemento.segundo$
+	  \IF {$distancia(elemento.primero.primero,elemento.primero.segundo) > M$}
+	    \STATE $costototalt1  = costototalt1 + tarifa$
+	  \ELSE	
+	    \STATE $costototalt2 = costototalt2 + tarifa$
+	  \ENDIF
+	  \STATE $componentesconexas = componentesconexas - 1$
+	\ENDIF
+    \ENDFOR
+    \RETURN {$<costototalt1,costototalt2>$}
 \end{algorithmic}
 \end{algorithm}
 \subsection{Explicación de la solución dada}
+\hspace{2cm}Lo primero que se hizo fue una lectura de las posibles cantidad de pruebas
+Luego, por cada prueba, leemos las coordenadas de la oficina y la colocamos dentro de una lista en forma de pares ordenados.
+Luego, sacamos todos los posibles arcos que pueden haber dadas
+las oficionas leidas, cada arco, tiene entonces un peso o costo
+y esto es calculado por la distancia entre oficinas en un plano
+Luego, ordenamos la lista por el costo de los arcos. Y empezamos a agregar a una nueva lista. Nuestro grafo final.
+A dicho grafo solo vamos a agregar los primeros N arcos, hasta obtener un grafo, Este grafo, tiene que cumplir que solo existe una cantidad de componentes disjuntas como modem hay en la prueba efectuada.
+Para verificar si se agrega o no un arco, tenemos que verificar si una coordenada ya ha sido agregada a nuestro grafo. Si es asi, entonces estamos uniendo dos componentes que antes estaban desunidas.
+Pero, si los dos puntos ya estan en nuestro nuevo grafo, entonces quiere decir que estamos haciendo un arco ya formado o un circuito. Por consiguiente este tipo de puntos no es agregado.
 \section{Problema 2}
 \subsection{Análisis de Complejidad}
 \hspace{2cm}Este Algoritmo se parece mucho al primero, este tiene
@@ -63,21 +105,34 @@ y otro externo que estan ciclando y uno depende el otro.
 Por ultimo, quedan dos ciclos, cada uno de orden {$O(n)$}, son ciclos de recorrido de los vectores. 
 Tomando en consideracion todos estos ordenes internos a nuestro algoritmo, podemos decir 
 que nuestro algoritmo se comporta en el peor caso como un algoritmo de orden {$O(n^{2})$}
-\subsection{Psucódigo}
 \begin{algorithm}                      % enter the algorithm environment
-\caption{Calcular $total$, que es el total de actividades que puede realizar el empleado}          % give the algorithm a caption
-\label{Problema 2}                           % and a label for \ref{} commands later in the document
+\caption{Calcular cantidad de pares desconectados}          % give the algorithm a caption
+\label{Problema 1}                           % and a label for \ref{} commands later in the document
 \begin{algorithmic}[1]                    % enter the algorithmic environment
-    \REQUIRE {$C$ Cantidad de tareas, $A$ Lista de tuplas de actividades}
-    \ENSURE Entero que indica la cantidad maxima de actividades que puede realizar
-    \STATE entero {$ultimo = -1$}
-    \RETURN {$ total $}
+\REQUIRE {$N$ Conjunto de Nodos, $Q$ Lista de Querys, $C$ Cantidad de Arcos Originales, $G$ Lista de Arcos, $H$ Arcos a Eliminar }
+    \ENSURE Lista de respuesta de los Querys
+    \STATE entero $total$ = $C*(C-1)/2$
+    \STATE lista $< entero > salida$
+    \FOR  {cada $elemento \in G$ y $elemento \notin H$} 
+      \STATE {unir$(elemento.primero,elemento.segundo)$}
+    \ENDFOR
+         
+    \FOR {cada $query \in L$}
+
+      \IF {$query.primero == 'Q'$}
+	\STATE $salida.push(total)$
+      \ELSE
+	\STATE $total-$=$unir(G[query.segundo.primero].primero$ , $G[query.segundo.primero].segundo)$
+      \ENDIF
+    \ENDFOR \COMMENT {Recorre la lista en orden inverso}
+    \RETURN {$salida$}
 \end{algorithmic}
 \end{algorithm}
 \subsection{Explicación de la solución dada}
+\hspace{2cm}El problema fue resuelto usando la idea que hacer unión de conjuntos es menos cosotosa que eliminar arcos de un grafo. En base a esto, armamos el grafo con todos los nodos menos los que se iban a eliminar y contamos a partir de esto las cantidad de conexiones que causaría  que este arco se colocase, así le restabamos al total de conexiones existentes en dicho momento y así según cada query solicitado. Usamos una implementacion basada kruskal usando cojuntos disjuntos para obtener el resultado deseado.
 \section{Tercer problema}
 \subsection{Análisis de Complejidad}
-\hspace{0.5cm}Primera parte es una lectura de la cantidad de pruebas que tiene el caso.
+\hspace{2cm}Primera parte es una lectura de la cantidad de pruebas que tiene el caso.
   Esta primera parte es {$O(n)$}, ya que es un ciclo de tamaño {$N$}.
   Luego, tenemos para cada empleado un ciclo por el numero de actividades que este realizara.
   Este ciclo es de tamaño n, por consiguiente, el proceso es {$O(n)$}
@@ -87,8 +142,8 @@ que nuestro algoritmo se comporta en el peor caso como un algoritmo de orden {$O
   la complejidad del problema es de {$ O(n^{2}log N)$}. 
   Pero, al ser el primer ciclo un ciclo de iteraciones de pruebas, donde el numero no sera muy grande, 
   podriamos pensar entonces que la complejidad de todo el algoritmo es la complejidad mas grande. 
-  Esta seria {$O(nlogN)$} 
-\subsection{Psucódigo}
+  Esta seria {$O(nlogN)$}
+ 
 \begin{algorithm}                      % enter the algorithm environment
 \caption{Calcular $total$, que es el total de actividades que puede realizar el empleado}          % give the algorithm a caption
 \label{Problema 3}                           % and a label for \ref{} commands later in the document
@@ -107,5 +162,9 @@ que nuestro algoritmo se comporta en el peor caso como un algoritmo de orden {$O
     \RETURN {$ total $}
 \end{algorithmic}
 \end{algorithm}
+
 \subsection{Explicación de la solución dada}
+\hspace{2cm}Primero leemos la cantidad de empleados que exite
+Luego, vemos cuales son las actividades que tiene dicho empleado, luego ordenamos las actividades del empleado de forma ascendete.
+Luego, vamos agregando actividades realizadas o posibles a un contador, mientras existan posiciones libres o espacios libres para hacer un trabajo. Haciendo esto, estamos usando la estrategia Greedy. Garantizando asi que sea la solucion mas optima al problema.
 \end{document}
