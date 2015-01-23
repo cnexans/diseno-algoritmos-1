@@ -1,13 +1,19 @@
 Este Algoritmo se parece mucho al primero, este tiene
-un for de orden O(n), pero es depreciado porque este N
+un while de orden O(n), pero es depreciado porque este N
 representa la cantidad de pruebas y no deberia ser un numero muy 
 grande.
 
-Despues exiten 3 ciclos, cada uno de orden O(n)
+Despues, internamente exiten 3 ciclos, cada uno de orden O(n)
+Cada uno de estos ciclos, son ciclos de lectura y de acomodacion de datos. Su complejidad no es muy grande para números pequeños, pero se podría complicar para números muy grandes o para pruebas con números muchos mas grandes.
 
-El siguiente ciclo, tiene una funcion de unir,que llama a una 
-funcion de busqueda que es recursiva. Esta recursividad le aporta
-al problema un orden O(n^2).
+El siguiente ciclo, es un for externo que llama a una funcion Unir internamente 
 
-Por consiguiente podriamos hablar de un algoritmo O(n^2)
+El ciclo es de orden O(n), luego la funcion de interna, tiene una llamada a otra funcion auxiliar que es recursiva. Esta funcion recursiva tambien tiene un comportamiendo de orden O(n)
+ya que se sabe que nunca sera mayor que N
+Podriamos decir entonces, que este ciclo, y por consiguiente la funcion interna tienen orden O(n^2), ya que hay un ciclo interno y otro externo que estan ciclando y uno depende el otro.
+
+Por ultimo, quedan dos ciclos, cada uno de orden O(n), son ciclos de recorrido de los vectores. 
+
+Tomando en consideracion todos estos ordenes internos a nuestro algoritmo, podemos decir que nuestro algoritmo se comporta en el peor caso como un algoritmo de orden O(n^2)
+
 
