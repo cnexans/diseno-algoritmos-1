@@ -1,0 +1,14 @@
+Se leen la cantidad de empleados
+Por cada empleado{
+	Leemos la cantidad de actividades
+	Por cada actividad{
+		Guardamos la duracion de la actividad
+	}
+	Ordenamos las actividades de forma ascendete por su comienzo
+	Por cada actividad{
+		Chequeamos que la actividad se pueda realizar por su tiempo
+
+	}
+	Salida < Cantidad de actividades realizadas
+}
+

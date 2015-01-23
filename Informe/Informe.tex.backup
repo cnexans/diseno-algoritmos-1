@@ -1,0 +1,87 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\input{sa.tex}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\title{}
+\author{}
+\date{}
+
+\pdfinfo{%
+  /Title    ()
+  /Author   ()
+  /Creator  ()
+  /Producer ()
+  /Subject  ()
+  /Keywords ()
+}
+
+\begin{document}
+\maketitle
+
+\section{Problema 1}
+\subsection{Análisis de Complejidad}
+\subsection{Psucódigo}
+\begin{algorithm}                      % enter the algorithm environment
+\caption{Calcular $total$, que es el total de actividades que puede realizar el empleado}          % give the algorithm a caption
+\label{Problema 1}                           % and a label for \ref{} commands later in the document
+\begin{algorithmic}[1]                    % enter the algorithmic environment
+    \REQUIRE {$C$ Cantidad de tareas, $A$ Lista de tuplas de actividades}
+    \ENSURE Entero que indica la cantidad maxima de actividades que puede realizar
+    \STATE entero {$ultimo = -1$}
+    \RETURN {$ total $}
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{Problema 2}
+\subsection{Análisis de Complejidad}
+\subsection{Psucódigo}
+\begin{algorithm}                      % enter the algorithm environment
+\caption{Calcular $total$, que es el total de actividades que puede realizar el empleado}          % give the algorithm a caption
+\label{Problema 2}                           % and a label for \ref{} commands later in the document
+\begin{algorithmic}[1]                    % enter the algorithmic environment
+    \REQUIRE {$C$ Cantidad de tareas, $A$ Lista de tuplas de actividades}
+    \ENSURE Entero que indica la cantidad maxima de actividades que puede realizar
+    \STATE entero {$ultimo = -1$}
+    \RETURN {$ total $}
+\end{algorithmic}
+\end{algorithm}
+
+\section{Tercer problema}
+\subsection{Análisis de Complejidad}
+Primera parte es una lectura de la cantidad de pruebas que tiene el caso.
+  Esta primera parte es {$O(n)$}, ya que es un ciclo de tamaño {$N$}.
+  Luego, tenemos para cada empleado un ciclo por el numero de actividades que este realizara.
+  Este ciclo es de tamaño n, por consiguiente, el proceso es {$O(n)$}
+  Se usa un algorimo de ordenamiento que viene con el lenguaje. Este algoritmo su complejidad es de {$O(nlogn)$}
+  Por ultimo, se realiza un ciclo de tamaño N, este ciclo tiene una complejidad de {$O(n)$}
+  Como tenemos el primer ciclo por afuera, y todos los demas internos, podriamos pensar que entonces 
+  la complejidad del problema es de {$ O(n^{2}log N)$}. 
+  Pero, al ser el primer ciclo un ciclo de iteraciones de pruebas, donde el numero no sera muy grande, 
+  podriamos pensar entonces que la complejidad de todo el algoritmo es la complejidad mas grande. 
+  Esta seria {$O(nlogN)$} 
+\subsection{Psucódigo}
+\begin{algorithm}                      % enter the algorithm environment
+\caption{Calcular $total$, que es el total de actividades que puede realizar el empleado}          % give the algorithm a caption
+\label{Problema 3}                           % and a label for \ref{} commands later in the document
+\begin{algorithmic}[1]                    % enter the algorithmic environment
+    \REQUIRE {$C$ Cantidad de tareas, $A$ Lista de tuplas de actividades}
+    \ENSURE Entero que indica la cantidad maxima de actividades que puede realizar
+    \STATE entero {$ultimo = -1$}
+    \STATE entero {$total$ = $0$}
+    \STATE {\bf ordenar({$A$})}
+    \FOR{ cada $elemento$ de $A$}
+	\IF {$ultimo > elemento.primero$}
+	\STATE $total$ = $total$ + 1 
+	\ENDIF
+	\STATE {$ultimo$ = $elemento.segundo$}
+    \ENDFOR
+    \RETURN {$ total $}
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}
