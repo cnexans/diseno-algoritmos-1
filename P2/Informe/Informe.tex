@@ -29,18 +29,76 @@
 
 
 
-\date{23/01/2015}
+\date{05/02/2015}
 
 \maketitle
 \section{Problema 1}
 \subsection{Análisis de Complejidad}
-  \hspace{2cm}
+\subsection{PseudoCódigo}
 \begin{algorithm}                      % enter the algorithm environment
-\caption{}          % give the algorithm a caption
-\label{Problema 1}                           % and a label for \ref{} 
+\caption{Algoritmo de Brelaz para la coloración de grafo modificado}          % give the algorithm a caption
+\label{Problema 1}                           % and a label for \ref{} commands later in the document
 \begin{algorithmic}[1]                    % enter the algorithmic environment
+\REQUIRE {$G$ Grafo no dirigido }
+    \ENSURE $Color$ Entero con el número de colores mínimo
+    \STATE  bool $back$ = \FALSE
+    \STATE bool $block$ = \FALSE
+    
+    \STATE $k$ = $w + 1$
+    \STATE {marcarClicle$(G)$}
+    \WHILE {$True$}
+		\IF {no $back$}
+			\STATE Determinar  $u_k$ \AND  $\cup(x_k)$
+			\FORALL {$c$ $\in$ $\cup(x_k)$}
+				\STATE {Determinar el numero de $nodos$ vecinos sin color de $x_k$ para los que no se ha usado el color $c$}		
+				\STATE {Determinar el numero de $nodos$ vecinos sin color de $x_k$ bloqueados en caso de la coloracion de $x_k$ con $c$}
+				\STATE { Ordenar los colores $c \in  \cup(x_k)$. Tomando en cuenta primero el numero de bloqueos y luego la cantidad de prevenciones}
+								
+ 			\ENDFOR
+ 		\ELSE
+ 			\STATE $c$ = color de $x_k$
+ 			\STATE $\cup(x_k)$ = $\cup(x_k)-{c}$
+ 			\STATE remover $label$ de $x_k$
+		\ENDIF    	 
+    	\IF {$\cup(u_k) \neq \oslash $}
+    		\STATE $i$ = color de orden minimal para $\cup(u_k)$
+    		\IF {$i$ no es un color bloqueado}
+				\STATE color del $nodo$ $x_k$ = $i$
+				\STATE $k$ = $k+1$
+				\IF {$k > n$}
+					\STATE $q = s$
+					\STATE \COMMENT {Se encontro una nueva solucion}
+		    		\IF {$q=w$}
+    					\STATE \COMMENT {Salir del ciclo}
+    				\ENDIF
+    				\STATE $k$ = Min entre los $nodo$ coloreados
+    				\STATE remover todas las $labels$ de los $nodos$
+    				\STATE {$\forall$ {$x_k,...,x_n$} $back$ = \TRUE}
+    			\ELSE
+    				\STATE $back$ = \FALSE
+    			\ENDIF
+    		\ELSE
+    			\STATE $back$ = \TRUE
+    			\STATE $block$ = \TRUE    			
+    		\ENDIF
+    	\ENDIF
+    	\IF {$back$}
+			\IF {$block$} 
+				\FORALL {color bloqueado $c$ $\in$ $\cup(u_k)$}
+					\STATE Determinar todos los $x_c$ $nodos$ bloqueados por $c$ \AND aplicar $label$ a cada uno de los $x_c$
+					\STATE $block$ = \FALSE 
+				\ENDFOR
+			\ENDIF
+			\STATE $label$ todos los $x_k$
+			\STATE $k$ = Maximo de todos los $nodos$ con $label$
+			\IF {$k$ < $w$}
+				\STATE \COMMENT {Salir del Ciclo}
+			\ENDIF			
+		\ENDIF				   		    		    	
+    \ENDWHILE
 \end{algorithmic}
 \end{algorithm}
+
 \subsection{Explicación de la solución dada}
 \hspace{2cm}
 
