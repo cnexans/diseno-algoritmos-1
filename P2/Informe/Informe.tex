@@ -34,6 +34,13 @@
 \maketitle
 \section{Problema 1}
 \subsection{Análisis de Complejidad}
+Cuando hablamos del analisis de complejidad de nuestro algoritmo, primero tenemos que ver el analisis de complejidad del brelaz
+\subsection{Explicación de la solución dada}
+\hspace{2cm}
+Nuestra solucion al problema toma en consideracion el paper suministrado sobre el algoritmo brelaz y su modificacion para hacerlo mas optimo. 
+Para implementar dicho algoritmo, usamos el lenguaje C++, con su implementacion de vectors en vez de crear una estructura para almacenar el grafo.
+De esta forma, tratamos de hacer mas ligera la implementacion en memoria y usamos las herramientas que nos provee el lenguaje.
+
 \subsection{PseudoCódigo}
 \begin{algorithm}                      % enter the algorithm environment
 \caption{Algoritmo de Brelaz para la coloración de grafo modificado}          % give the algorithm a caption
@@ -41,12 +48,12 @@
 \begin{algorithmic}[1]                    % enter the algorithmic environment
 \REQUIRE {$G$ Grafo no dirigido }
     \ENSURE $Color$ Entero con el número de colores mínimo
-    \STATE  bool $back$ = \FALSE
+    \STATE bool $back$ = \FALSE
     \STATE bool $block$ = \FALSE
     
     \STATE $k$ = $w + 1$
     \STATE {marcarClicle$(G)$}
-    \WHILE {$True$}
+    \WHILE \TRUE
 		\IF {no $back$}
 			\STATE Determinar  $u_k$ \AND  $\cup(x_k)$
 			\FORALL {$c$ $\in$ $\cup(x_k)$}
@@ -82,13 +89,23 @@
     			\STATE $block$ = \TRUE    			
     		\ENDIF
     	\ENDIF
-    	\IF {$back$}
+    	\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}			
+\caption{Continuacion}  
+\begin{algorithmic}
+		\WHILE \TRUE
+		\STATE \COMMENT {Continuacion del ciclo pasado}
+			\IF {$back$}
 			\IF {$block$} 
 				\FORALL {color bloqueado $c$ $\in$ $\cup(u_k)$}
 					\STATE Determinar todos los $x_c$ $nodos$ bloqueados por $c$ \AND aplicar $label$ a cada uno de los $x_c$
 					\STATE $block$ = \FALSE 
 				\ENDFOR
 			\ENDIF
+			
 			\STATE $label$ todos los $x_k$
 			\STATE $k$ = Maximo de todos los $nodos$ con $label$
 			\IF {$k$ < $w$}
@@ -99,7 +116,5 @@
 \end{algorithmic}
 \end{algorithm}
 
-\subsection{Explicación de la solución dada}
-\hspace{2cm}
 
 \end{document}
