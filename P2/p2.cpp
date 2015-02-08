@@ -45,8 +45,8 @@ int main(){
 			cin >> nodo2;
 			adyacentes[nodo1].push_back(nodo2);
 			adyacentes[nodo2].push_back(nodo1);
-			colores[j];
-			marcados[j] = false;
+			colores.push_back(j);
+			marcados.push_back(true);
 			j=j+1;
 			if (contador_arcos==0){
 				break;
@@ -57,7 +57,7 @@ int main(){
 
     vector<int> nodos_solucion(adyacentes.size());
 	int n = adyacentes.size();
-	int q = 0;
+	int q = 5;
 	int w = adyacentes.size();
 	bool back = false;
 	int k = w;
@@ -74,7 +74,7 @@ int main(){
 			//Para cada elemento de la solucion parcial
 			for(int j = 0;j < k; j++){
 				//Si el elemento es vecino del nodo k
-				if(find(adyacentes[k].begin()+1, adyacentes[k].end(), j) != adyacentes[k].end()){
+				if(find(adyacentes[k].begin(), adyacentes[k].end(), j) != adyacentes[k].end()){
 					if((conjunto.empty())==false){
 							    vector<int>::iterator elemento = find(conjunto.begin()+1,conjunto.end(),colores[j]);
 								if(elemento != conjunto.end()){
@@ -136,7 +136,7 @@ int main(){
 
 			for(int i =0; i < k; i++){
 				vector<int> coloresEnUso;
-				if(find(adyacentes[k].begin()+1, adyacentes[k].end(), i) != adyacentes[k].end()){
+				if(find(adyacentes[k].begin(), adyacentes[k].end(), i) != adyacentes[k].end()){
 							if(binary_search(coloresEnUso.begin(),coloresEnUso.end(),colores[i]) == false){
 								marcados[i]=true;								
 								coloresEnUso.push_back(colores[i]);
@@ -157,7 +157,8 @@ int main(){
 	
 	}	
 }
-
-
+for(int i; i < adyacentes.size(); i++){
+	cout << colores[i] << " ";
+}
 
 }
