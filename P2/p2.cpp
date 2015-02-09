@@ -110,7 +110,7 @@ int main(int argc, char* argv[]){
 					tokanizer = strtok (NULL, " ");
 					cant_arcos=atoi(tokanizer);
 					int i =0;
-					while(i< int(*tokanizer)){
+					while(i< cant_nodos){
 			            adyacentes.push_back(make_pair(i,vector<int>()));
 			            adyacentes2.push_back(make_pair(i,vector<int>()));
 						colores_posibles.push_back(vector<int>());
@@ -171,7 +171,6 @@ int main(int argc, char* argv[]){
 			adyacentes2.erase(adyacentes2.begin());
 			grado.erase(grado.begin());
 		} while(verticesSinColor());
-		
 	}
     vector<int> nodos_solucion(adyacentes.size());
 	int n = adyacentes.size();
@@ -180,12 +179,8 @@ int main(int argc, char* argv[]){
 	int w=0;
 
 		int color_max = 0;
-		for( int i = 0;i < colores.size(); i++){
-			color_max++;
-			if(color_max !=	colores[i]){
-				color_max--;
-				break;
-			}
+		for(int i = 0;i < colores.size(); i++){
+			color_max=max(color_max,colores[i]);
 		}
 		w = color_max;
 
@@ -208,9 +203,8 @@ int main(int argc, char* argv[]){
 	int k = w ;
 	while(true){
 		if(back == false){
-
 			int min = std::min(*max_element(colores.begin(),colores.end()), q - 1);
-			vector <int> conjunto(min);https://www.google.co.ve/
+			vector <int> conjunto(min);
 			for (unsigned int i=1; i<=min; i++)
 		    conjunto[i-1] = i;
 			for(int j = 0;j < k; j++){
@@ -218,7 +212,9 @@ int main(int argc, char* argv[]){
 					if((conjunto.empty())==false){
 							    vector<int>::iterator elemento = find(conjunto.begin()+1,conjunto.end(),colores[j]);
 								if(elemento != conjunto.end()){
-									conjunto.erase(elemento);
+									if (conjunto.empty() == false){
+										conjunto.erase(elemento);
+									}
 								}
 					}else{
 						
@@ -298,8 +294,11 @@ int main(int argc, char* argv[]){
 	}	
 
 	int salida = 0;
-	for(int i = 0; i< colores.size(); i ++){
-	   salida=max(colores[i],salida);
+	sort(colores.begin(), colores.end());
+	for(int i = 0; i< colores.size(); i++){
+		if(colores[i] > salida){
+		   salida=salida+1;
+		}
 	}
 	cout << " " << salida << endl;
 }
