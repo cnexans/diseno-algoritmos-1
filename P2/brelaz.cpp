@@ -42,10 +42,12 @@ ResultadoGrafo algoritmoBrelaz(Grafo * graph){
 			marcados[k]=false;
 			if(colores_posibles[k].empty() == false){
 					std::vector<int>::iterator elemento =	find(colores_posibles[k].begin()+1,colores_posibles[k].end(),color) ;
-			if(elemento != colores_posibles.end()){
+				if(elemento != colores_posibles.end()){
 					colores_posibles.erase(elemento);
+				}
 			}
 		}
+
 
 		vector<int> conjuntok = colores_posibles[k];
 						
@@ -106,5 +108,4 @@ ResultadoGrafo algoritmoBrelaz(Grafo * graph){
 			}	
 		}
 	
-	}	
 }

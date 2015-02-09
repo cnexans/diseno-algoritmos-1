@@ -1,0 +1,38 @@
+c DESCRIPTION: Quasi-random coloring problem
+c CODE SOURCE: Joseph Culberson (joe@cs.ualberta.ca)
+c Specifications: 
+c   Random seed: 49
+c   No hidden coloring
+c   Probability: 0.100000
+c   random IID graph
+c   Degree Information:
+c   Min:0 Avg:2.500000 Max:5 Std:1.565248
+c No verification required.
+c Creation Date: Sun Mar  4 15:06:19 2012
+p edge 20 25
+c no cheat
+e 2 1
+e 4 2
+e 6 2
+e 6 5
+e 7 3
+e 8 4
+e 8 7
+e 10 2
+e 10 3
+e 10 7
+e 11 4
+e 12 1
+e 12 5
+e 15 4
+e 15 6
+e 15 7
+e 15 8
+e 16 6
+e 17 14
+e 18 4
+e 18 8
+e 18 14
+e 19 6
+e 19 15
+e 20 19
