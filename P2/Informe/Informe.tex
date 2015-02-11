@@ -33,14 +33,24 @@
 
 \maketitle
 \section{Problema 1}
-\subsection{Análisis de Complejidad}
-Cuando hablamos del analisis de complejidad de nuestro algoritmo, primero tenemos que ver el analisis de complejidad del brelaz
-\subsection{Explicación de la solución dada}
+\subsection{Descripción del modelo utilizado para representar el problema}
 \hspace{2cm}
-Nuestra solucion al problema toma en consideracion el paper suministrado sobre el algoritmo brelaz y su modificacion para hacerlo mas optimo. 
-Para implementar dicho algoritmo, usamos el lenguaje C++, con su implementacion de vectors en vez de crear una estructura para almacenar el grafo.
+Para representar el problema, decidimos usar listas(vector) donde fuimos almacenando los datos. Despues, los datos trabajados fueron guardados en otro vector, haciendolos mas fácil de acceder y tener la información necesaria al momento de buscar la coloración de los nodos vecinos.
+\subsection{Estructuras de datos y algoritmos involucrados en la aplicación}
+\hspace{2cm}
+Nuestra solución al problema toma en consideración el paper suministrado sobre el algoritmo brelaz y su modificación para hacerlo mas óptimo. 
+Para implementar dicho algoritmo, usamos el lenguaje C++, con su implementación de vectors en vez de crear una estructura para almacenar el grafo.
+Decidimos usar esta estructura sobre las otras, ya que en el lenguaje C++, esta se encuentra bastante optimizada con respecto al manejo de memoria y velocidad de accesibilidad.
+De igual forma, dejamos de usar estructuras diseñadas por nosotros para el almacenamiento de los datos, ya que podria no ser la opción mas óptima. Y en caso de haber una cantidad considerable de datos, podríamos tener problemas de almacenamiento.
 De esta forma, tratamos de hacer mas ligera la implementacion en memoria y usamos las herramientas que nos provee el lenguaje.
+\subsection{Indicación de los problemas encontrados y la manera en que se resolvieron}
+\hspace{2cm}
+Para este proyecto, nos encontramos con diversos problemas que acontinuación enumeraremos
+\begin{enumerate}
+\item {Se tuvo varios problemas encontrando una documentación válida para hacer la implementacion de este algoritmo, para resolver este problema, tuvimos varias sesiones o reuniones entre nosotros para hacer una mejor comprehensión del pseudo-código.  }
+\item {Se tuvieron muchos problemas con el paper entregado, ya que este, no está bien explicado, o mejor dicho se encuentra explicado a un nivel muy alto y poco entendible. Para resolver este problema, se hicieron busquedas en internet, adicionalmente se hicieron varias preguntas a otros compañeros del curso. }
 
+\end{enumerate}
 \subsection{PseudoCódigo}
 \begin{algorithm}                      % enter the algorithm environment
 \caption{Algoritmo de Brelaz para la coloración de grafo modificado}          % give the algorithm a caption
@@ -108,7 +118,7 @@ De esta forma, tratamos de hacer mas ligera la implementacion en memoria y usamo
 			
 			\STATE $label$ todos los $x_k$
 			\STATE $k$ = Maximo de todos los $nodos$ con $label$
-			\IF {$k$ < $w$}
+			\IF {$k$ <  $w$}
 				\STATE \COMMENT {Salir del Ciclo}
 			\ENDIF			
 		\ENDIF				   		    		    	
