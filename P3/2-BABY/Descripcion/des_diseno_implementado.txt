@@ -1,0 +1,1 @@
+Descripción del diseño del algoritmo implementado para la solución óptima
