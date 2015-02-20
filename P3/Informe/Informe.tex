@@ -1,0 +1,130 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\input{sa.tex}
+%\documentclass[a4paper,10pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\title{}
+\author{}
+\date{}
+\pdfinfo{%
+  /Title    (Diseño de Algoritmos - Proyecto 1)
+  /Author   (Fabio Castro, Leopoldo Pimentel)
+  /Creator  ()
+  /Producer ()
+  /Subject  ()
+  /Keywords ()
+}
+\begin{document}
+
+
+
+
+ 
+\title{\Huge Proyecto 1-Diseño de Algoritmos I}
+
+
+
+\author{Fabio Castro 10-10132, Leopoldo Pimentel 06-40095} 
+
+
+
+\date{05/02/2015}
+
+\maketitle
+\section{Problema 1}
+\subsection{Descripción del modelo utilizado para representar el problema}
+\hspace{2cm}
+Para representar el problema, decidimos usar listas(vector) donde fuimos almacenando los datos. Despues, los datos trabajados fueron guardados en otro vector, haciendolos mas fácil de acceder y tener la información necesaria al momento de buscar la coloración de los nodos vecinos.
+\subsection{Estructuras de datos y algoritmos involucrados en la aplicación}
+\hspace{2cm}
+Nuestra solución al problema toma en consideración el paper suministrado sobre el algoritmo brelaz y su modificación para hacerlo mas óptimo. 
+Para implementar dicho algoritmo, usamos el lenguaje C++, con su implementación de vectors en vez de crear una estructura para almacenar el grafo.
+Decidimos usar esta estructura sobre las otras, ya que en el lenguaje C++, esta se encuentra bastante optimizada con respecto al manejo de memoria y velocidad de accesibilidad.
+De igual forma, dejamos de usar estructuras diseñadas por nosotros para el almacenamiento de los datos, ya que podria no ser la opción mas óptima. Y en caso de haber una cantidad considerable de datos, podríamos tener problemas de almacenamiento.
+De esta forma, tratamos de hacer mas ligera la implementacion en memoria y usamos las herramientas que nos provee el lenguaje.
+\subsection{Indicación de los problemas encontrados y la manera en que se resolvieron}
+\hspace{2cm}
+Para este proyecto, nos encontramos con diversos problemas que acontinuación enumeraremos
+\begin{enumerate}
+\item {Se tuvo varios problemas encontrando una documentación válida para hacer la implementacion de este algoritmo, para resolver este problema, tuvimos varias sesiones o reuniones entre nosotros para hacer una mejor comprehensión del pseudo-código.  }
+\item {Se tuvieron muchos problemas con el paper entregado, ya que este, no está bien explicado, o mejor dicho se encuentra explicado a un nivel muy alto y poco entendible. Para resolver este problema, se hicieron busquedas en internet, adicionalmente se hicieron varias preguntas a otros compañeros del curso. }
+
+\end{enumerate}
+\subsection{PseudoCódigo}
+\begin{algorithm}                      % enter the algorithm environment
+\caption{Algoritmo de Brelaz para la coloración de grafo modificado}          % give the algorithm a caption
+\label{Problema 1}                           % and a label for \ref{} commands later in the document
+\begin{algorithmic}[1]                    % enter the algorithmic environment
+\REQUIRE {$G$ Grafo no dirigido }
+    \ENSURE $Color$ Entero con el número de colores mínimo
+    \STATE bool $back$ = \FALSE
+    \STATE bool $block$ = \FALSE
+    
+    \STATE $k$ = $w + 1$
+    \STATE {marcarClicle$(G)$}
+    \WHILE \TRUE
+		\IF {no $back$}
+			\STATE Determinar  $u_k$ \AND  $\cup(x_k)$
+			\FORALL {$c$ $\in$ $\cup(x_k)$}
+				\STATE {Determinar el numero de $nodos$ vecinos sin color de $x_k$ para los que no se ha usado el color $c$}		
+				\STATE {Determinar el numero de $nodos$ vecinos sin color de $x_k$ bloqueados en caso de la coloracion de $x_k$ con $c$}
+				\STATE { Ordenar los colores $c \in  \cup(x_k)$. Tomando en cuenta primero el numero de bloqueos y luego la cantidad de prevenciones}
+								
+ 			\ENDFOR
+ 		\ELSE
+ 			\STATE $c$ = color de $x_k$
+ 			\STATE $\cup(x_k)$ = $\cup(x_k)-{c}$
+ 			\STATE remover $label$ de $x_k$
+		\ENDIF    	 
+    	\IF {$\cup(u_k) \neq \oslash $}
+    		\STATE $i$ = color de orden minimal para $\cup(u_k)$
+    		\IF {$i$ no es un color bloqueado}
+				\STATE color del $nodo$ $x_k$ = $i$
+				\STATE $k$ = $k+1$
+				\IF {$k > n$}
+					\STATE $q = s$
+					\STATE \COMMENT {Se encontro una nueva solucion}
+		    		\IF {$q=w$}
+    					\STATE \COMMENT {Salir del ciclo}
+    				\ENDIF
+    				\STATE $k$ = Min entre los $nodo$ coloreados
+    				\STATE remover todas las $labels$ de los $nodos$
+    				\STATE {$\forall$ {$x_k,...,x_n$} $back$ = \TRUE}
+    			\ELSE
+    				\STATE $back$ = \FALSE
+    			\ENDIF
+    		\ELSE
+    			\STATE $back$ = \TRUE
+    			\STATE $block$ = \TRUE    			
+    		\ENDIF
+    	\ENDIF
+    	\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}			
+\caption{Continuacion}  
+\begin{algorithmic}
+		\WHILE \TRUE
+		\STATE \COMMENT {Continuacion del ciclo pasado}
+			\IF {$back$}
+			\IF {$block$} 
+				\FORALL {color bloqueado $c$ $\in$ $\cup(u_k)$}
+					\STATE Determinar todos los $x_c$ $nodos$ bloqueados por $c$ \AND aplicar $label$ a cada uno de los $x_c$
+					\STATE $block$ = \FALSE 
+				\ENDFOR
+			\ENDIF
+			
+			\STATE $label$ todos los $x_k$
+			\STATE $k$ = Maximo de todos los $nodos$ con $label$
+			\IF {$k$ <  $w$}
+				\STATE \COMMENT {Salir del Ciclo}
+			\ENDIF			
+		\ENDIF				   		    		    	
+    \ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+
+\end{document}
