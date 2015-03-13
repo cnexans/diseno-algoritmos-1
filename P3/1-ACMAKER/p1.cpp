@@ -1,5 +1,5 @@
 /*
-/ ci5651 (Diseño de Algoritmos I) - Proyecto 3 - Problema BORW SPOJ
+/ ci5651 (Diseño de Algoritmos I) - Proyecto 3 - Problema ACMAKER SPOJ
 / Fabio, Castro, 10-10132
 / Leopoldo, Pimentel 06-40095
 */
