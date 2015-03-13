@@ -4,60 +4,68 @@
 / Leopoldo, Pimentel 06-40095
 */
  
- // Librerías a importar
-#include <stdio.h>
-#include <stdlib.h>
+// Librerías a importar
 #include <iostream>
+#include <stdio.h>
+#include <cstring>
+#include <algorithm>
 using namespace std;
 
-//  Máximo entero
-#define MAXN 16
-#define MAXB (1<<MAXN)
+// Constantes
+#define max_num 16
+#define max_bits (1<<max_num) 
 
-// Variables globales para el DP
-unsigned char mascaraBit[MAXB];
-int dp[MAXB];
-int T, N;
-int origen[MAXN], destino[MAXN];
+// Variables Globales para el dp
+int n;
+int y_pos[max_num];
+int x_pos[max_num];
+int dp_sol[max_bits];
 
-// Función para calculo del mínimo
-int min(int a, int b){ 
-	return a < b ? a : b; 
+// Función recursiva para el Dp
+int dp(int mascara, int pos){
+
+    // Si la posicion que estoy revisando es la ultima, retorno 0
+    if(pos == n){
+        return 0;
+    } 
+
+    /*  Si he calculado el dp de dicha instancia, la retorno,  
+    /  en caso contraro la calculo diciendo el mínimo de mover la reina 
+    /  a una posicion correcta
+    */
+    if(dp_sol[mascara]!=-1){
+        return dp_sol[mascara];
+    }else{
+        int ans=10000000;
+        for(int i=0; i<n; i++)
+            if(!(mascara & (1<<i)))
+                ans=min(ans,abs(i-pos)+ 
+                        abs(y_pos[pos]-x_pos[i])+
+                            dp(mascara | (1<<i), pos+1));
+        return dp_sol[mascara]=ans;
+    }
 }
 
-int main(void){
-	int i, j;
+int main(){
 
-	// Creación de la Máscara de Bits
-	for (i = 1; i < MAXB; i++)
-		mascaraBit[i] = mascaraBit[i ^ (i&-i)] + 1;
+    // Se realiza la lectura de cada caso, hasta que se lea un 0
+    while(cin >> n, n !=0){
 
-	// Ciclo que itera por cada caso de prueba hasta que N sea igual a 0,
-	// y guarda en N la cantidad de elementos de la secuencia a leer
-	while (cin >> N, N){
+        // Se inicializa el vector  de soluciones de bits
+        memset(dp_sol,-1,sizeof (int)*(1<<n));
 
-		// Se lee los nodos X
-		for (i = 0; i < N; i++){
-			cin >> origen[i];
-		}
+        // Se leen las posiciones X de las reinas
+        for(int i=0; i<n; i++){
+            cin >> x_pos[i];
+        }
 
-		// Se lee los nodos Y
-		for (i = 0; i < N; i++){
-			cin >> destino[i];
-		}
-
-		// Ciclo del DP
-		for (i = 1; i < (1<<N); i++){
-			for (j = 0, dp[i] = (1<<30); (1<<j) <= i; j++){
-				if (i & (1<<j)){
-					dp[i] = min(dp[i],
-					            dp[i^(1<<j)] + abs(mascaraBit[i]-j-1) + abs(origen[j]-destino[mascaraBit[i]-1]));
-				}
-			}
-		}
-
-		// Valor de salida del DP
-		cout << dp[(1<<N) -1] << endl;
-	}
-	return 0;
+        // Se leen las posiciones Y de las reinas
+        for(int i=0; i<n; i++){
+            cin >> y_pos[i];
+        }
+        
+        // Se ejecuta el dep y se imprime el resultado
+        cout << dp(0,0) << endl; 
+    }
+    return 0;
 }
