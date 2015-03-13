@@ -5,7 +5,11 @@
 */
  
 /*  Se utilizó una estartegia top-down usando memorizacion en un
-/  vector de bits.
+/ vector de bits. Donde, se se hace uso de una máscara de bits, 
+/ que indica que posiciones se han usado o no en dicho momentos.
+/ 1 indica que si ha sido usado, y 0 que no. Se realiza una comparacion
+/ de bits, si el or lógico resulta 0 entonces esta vacia la posición
+/ si resulta 1, esta ocupada.
 */
 
 // Librerías a importar

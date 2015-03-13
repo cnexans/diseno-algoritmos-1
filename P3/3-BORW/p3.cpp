@@ -4,6 +4,12 @@
 / Leopoldo, Pimentel 06-40095
 */
 
+/* Se utilizó una estrategia de programación dinámica top-down
+/ con una matriz de memorización de 3 dimensiones, donde las 
+/ soluciones parciales se solapan, y solo se ejecuta la función recursiva
+/ cuando se necesita
+*/
+
 // Librerías a importar
 #include <stdio.h>
 #include <iostream>
@@ -123,6 +129,6 @@ int main(void){
 		// Se imprime el caso de prueba y se ejecuta el dp
 		cout << dp_fun(2,1,0) << endl;
 	}
-	
+
 	return 0;
 }
