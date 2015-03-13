@@ -24,7 +24,6 @@ int main(){
 		}
 		bool ultimo = false;
 		while(!(ultimo)){
-			// cout << ultimo;
 			while (std::getline(cin, line)){
 				istringstream linestream(line);
 				string word;
