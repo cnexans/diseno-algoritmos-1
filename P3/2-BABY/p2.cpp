@@ -4,6 +4,10 @@
 / Leopoldo, Pimentel 06-40095
 */
  
+/*  Se utilizó una estartegia top-down usando memorizacion en un
+/  vector de bits.
+*/
+
 // Librerías a importar
 #include <iostream>
 #include <stdio.h>
@@ -63,7 +67,7 @@ int main(){
         for(int i=0; i<n; i++){
             cin >> y_pos[i];
         }
-        
+
         // Se ejecuta el dep y se imprime el resultado
         cout << dp(0,0) << endl; 
     }
