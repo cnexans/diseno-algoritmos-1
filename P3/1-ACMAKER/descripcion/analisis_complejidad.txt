@@ -1,1 +1,5 @@
 Análisis de complejidad en tiempo y espacio
+
+
+Como es una matriz de tamaño M x N x 2. Donde M es el tamaño de la palabra por N el tamaño de la abreviacion.
+Como en el peor caso el algoritmo tiene que recorrer toda la matriz entonces, que nuestra solucion es de 0(MN2), ahora M y N son dos variables independientes no se pueden unir. Como el 2 es constante, entonces podemos asegurar que el algoritmo es de orden O(MN) 

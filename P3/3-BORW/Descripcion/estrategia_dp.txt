@@ -1,1 +1,3 @@
 Estrategia de programación dinámica seguida
+
+Para esta estrategia, se usa una matriz de tamaño N x N x N, donde fuimos almacenando por indice las secuencias que ibamos trabajando y se fue guardando el numero de la secuencia que se iba alcanzado.

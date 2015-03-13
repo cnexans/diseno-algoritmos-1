@@ -1,1 +1,3 @@
 Análisis de complejidad en tiempo y espacio
+
+Para este algoritmo se uso el O(N 2^n ) N es la cantidad de reinas y 2 ^n es la cantidad de mascaras que tiene que calcular para saber cuantas reinas existen.

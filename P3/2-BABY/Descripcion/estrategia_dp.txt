@@ -1,1 +1,4 @@
 Estrategia de programación dinámica seguida
+
+Para la estrategia de nuestra solucion, en una matriz de tamaño 1.En dicha matriz se almaceno una mascara de bits. Con la finalidad de poder hace un OR logico. Asi vemos donde estan las reinas ya colocadas en el tablero. Con esto, tenemos una solucion bastante optima para el problema.
+

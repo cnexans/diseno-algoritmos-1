@@ -1,1 +1,3 @@
 Estrategia de programación dinámica seguida
+
+Como estrategia de nuestra solucion, implementamos una matriz de tamaño M x N x 2. En dicha matriz fuimos almacenando en la posicion de la palabra y en el posicion de la oracion, guardamos cuantas formas tengo de lograr el acronimo en ese momento.

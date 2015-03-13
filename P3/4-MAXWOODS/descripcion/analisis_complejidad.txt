@@ -1,1 +1,3 @@
 Análisis de complejidad en tiempo y espacio
+
+La complejidad de este algoritmo es de orden O(n^2), esto es debido a que aunque nuestra solicion del dp es casi lineal, nuestra implementacion siempre tiene que recorrer toda la matriz dada para poder obtener la respuesta. 

@@ -1,1 +1,4 @@
 Análisis de complejidad en tiempo y espacio
+
+La complejidad de este algotmimo es de orden O(n^3) N es el tamaño de la entrada. Es decir la cantidad de elementos que entran.
+Igualmente en cuanto a espacio, se habla de una matriz de tamaño de 3 dimensiones de N

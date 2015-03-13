@@ -1,1 +1,5 @@
 Descripción del diseño del algoritmo implementado para la solución óptima
+
+Para esta solucion, se guardo la posicion de la palabra que esta analizando uy la posicion de la abrevicion. Tambien se tuvo en cuenta si se habia usado ya esa palabra en la abrevicion o si se habia usado ya la letra en las palabras. 
+
+Tambien, antes de correr el algoritmo, se limpio la oracion de las palabras innecesarias para el acronimo. De esta forma se pudo reducir el nivel de complejidad de los casos del algoritmo.

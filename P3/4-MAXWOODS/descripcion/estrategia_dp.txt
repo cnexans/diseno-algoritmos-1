@@ -1,1 +1,4 @@
 Estrategia de programación dinámica seguida
+
+Para la estrategia de este algoritmo, se uso una matriz de tamaño N x 2, que representa el total de columnas que tiene la matriz de entrada y otra dimension adicional para guardar el piso de arriba.
+En el arreglo auxiliar, fuimos guardando la maxima cantidad posibles de arboles cortados. De esta forma, siempre tuvimos bajo nuesta mira; el nivel donde estabamos y el nivel de arriba.

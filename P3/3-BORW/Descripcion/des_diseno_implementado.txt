@@ -1,1 +1,4 @@
 Descripción del diseño del algoritmo implementado para la solución óptima
+
+Para la solucion optima de este algoritmo, se uso una matriz de 3 dimensiones, donde se fue guardando las solciones parciales. Esto es debido a que plantenado el problema de una forma recursiva podemos ver que muchas de las soluciones se solapan. Gracias a este comportamiento, es que se pudo idear un algoritmo que iba almacenando las solciones parciales y se tenian a la mano en caso de ser necesarias. 
+

@@ -1,1 +1,3 @@
 Descripción de la función de optimización empleada
+
+Para este problema se uso una funcion de optimizacion Top-Down, en programacion dinamica, donde se hizo de forma recursiva todo el planteamiento del algoritmo.

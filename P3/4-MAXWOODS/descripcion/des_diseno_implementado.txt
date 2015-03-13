@@ -1,1 +1,4 @@
 Descripción del diseño del algoritmo implementado para la solución óptima
+
+Para este problema, se uso un pensamiento bottom-up. En el cual, se hizo de forma lineal la solucion del problema. Para poder hacer esto, se construyo una matriz donde se fue almacenando la informacion de cuantos arboles se iban cortando hasta un punto. Esto es debido a que para la solucion parcial solo es necesario saber el nivel en el que estas y el nivel superior. Con esta informacion, tienes suficiente para correr el algoritmo.
+
