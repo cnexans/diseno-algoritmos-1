@@ -20,10 +20,10 @@ using namespace std;
 
 // Constantes
 #define inf 100000000
-#define MAXN 101
+#define max_string 101
 
 // Variables globales
-int dp_sol[MAXN][MAXN][2]; // Matriz de memorizacion del Dp
+int dp_sol[max_string][max_string][2]; // Matriz de memorizacion del Dp
 int tam_abre; // Tamaño de la abreviacion
 int tam_palabra; // Tamaño de la palabra de entrada
 string abre, abreviacion; /* String que tienen guardada la abreviacion en
